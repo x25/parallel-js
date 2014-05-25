@@ -1,0 +1,28 @@
+{
+	"name": "parallel-js",
+	"version": "1.0.1",
+	"description": "Run tasks in parallel or one after another",
+	"main": "lib/index.js",
+	"scripts": {
+		"test": "NODE_ENV=test ./node_modules/.bin/nodeunit test/*.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/x25/parallel-js.git"
+	},
+	"keywords": [
+		"parallel",
+		"async",
+		"concurrent",
+		"queue"
+	],
+	"devDependencies": {
+		"nodeunit": "latest"
+	},
+	"author": "x25",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/x25/parallel-js/issues"
+	},
+	"homepage": "https://github.com/x25/parallel-js"
+}
