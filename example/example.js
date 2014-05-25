@@ -4,7 +4,6 @@ var job = function (video, next) {
 	// do something with video...
 	// and when it's done, execute callback for next job
 
-	var self = this;
 	setTimeout(function () {
 
 		var timestamp = new Date().getTime()/1000;
@@ -16,10 +15,7 @@ var job = function (video, next) {
 
 var maxProcess = 3;
 
-var processor = new Processor(
-	job,
-	maxProcess
-);
+var processor = new Processor(job, maxProcess);
 
 for (var i = 1; i<=9; i++) {
 	processor.process(i + '.flv');

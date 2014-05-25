@@ -1,4 +1,4 @@
-parallel-js
+parallel-js [![Build Status](https://travis-ci.org/x25/parallel-js.png)](https://travis-ci.org/x25/parallel-js)
 ===========
 
 Run tasks in parallel or one after another.
@@ -16,7 +16,6 @@ var job = function (video, next) {
 	// do something with video...
 	// and when it's done, execute callback for next job
 
-	var self = this;
 	setTimeout(function () {
 
 		var timestamp = new Date().getTime()/1000;
@@ -28,10 +27,7 @@ var job = function (video, next) {
 
 var maxProcess = 2;
 
-var processor = new Processor(
-	job,
-	maxProcess
-);
+var processor = new Processor(job, maxProcess);
 
 processor.process('1.flv');
 processor.process('2.flv');
