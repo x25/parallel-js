@@ -11,13 +11,18 @@ module.exports = {
 	},
 
 	testProcessor: function (test) {
-		test.expect(2);
+		test.expect(3);
 
-		var n = 1;
+		var n = 0;
 
 		var job = function (data, next) {
-			test.equal('data' + (n++), data);
-			next();
+			if (!n) {
+				test.equal('data' + (++n), data);
+				next('error');
+			} else {
+				test.equal('data' + (n++), data);
+				next();
+			}
 		};
 
 		var processor = new Processor(job);
