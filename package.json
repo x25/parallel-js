@@ -1,28 +1,31 @@
 {
-	"name": "parallel-js",
-	"version": "1.0.8",
-	"description": "Run tasks in parallel or one after another",
-	"main": "lib/index.js",
-	"scripts": {
-		"test": "NODE_ENV=test ./node_modules/.bin/nodeunit test/*.js"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/x25/parallel-js.git"
-	},
-	"keywords": [
-		"parallel",
-		"async",
-		"concurrent",
-		"queue"
-	],
-	"devDependencies": {
-		"nodeunit": "latest"
-	},
-	"author": "x25",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/x25/parallel-js/issues"
-	},
-	"homepage": "https://github.com/x25/parallel-js"
+  "name": "parallel-js",
+  "version": "1.0.9",
+  "description": "Run tasks in parallel or one after another",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test ./node_modules/.bin/nodeunit test/*.js",
+    "coveralls": "jscoverage lib && NODE_COV=1 nodeunit --reporter=lcov test | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/x25/parallel-js.git"
+  },
+  "keywords": [
+    "parallel",
+    "async",
+    "concurrent",
+    "queue"
+  ],
+  "devDependencies": {
+    "coveralls": "^2.10.0",
+    "jscoverage": "^0.5.1",
+    "nodeunit": "^0.9.0"
+  },
+  "author": "x25",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/x25/parallel-js/issues"
+  },
+  "homepage": "https://github.com/x25/parallel-js"
 }

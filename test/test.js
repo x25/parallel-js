@@ -1,4 +1,4 @@
-var Processor = require('./../lib').Processor;
+var Processor = require('./..').Processor;
 
 module.exports = {
 	setUp: function (callback) {
@@ -16,20 +16,25 @@ module.exports = {
 		var n = 0;
 
 		var job = function (data, next) {
-			if (!n) {
-				test.equal('data' + (++n), data);
-				next('error');
-			} else {
-				test.equal('data' + (n++), data);
-				next();
-			}
+			setTimeout(function() {
+				if (!n) {
+					test.equal('data' + (++n), data);
+					next('error');
+				} else {
+					test.equal('data' + (n++), data);
+					next();
+
+					if (n === 3) {
+						test.done();
+					}
+				}
+			}, 100);
 		};
 
-		var processor = new Processor(job);
+		var maxProcess = 1;
+		var processor = new Processor(job, maxProcess);
 
 		processor.process('data1');
 		processor.process('data2');
-
-		test.done();
 	}
 };

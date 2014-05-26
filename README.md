@@ -1,4 +1,4 @@
-parallel-js [![Build Status](https://travis-ci.org/x25/parallel-js.png)](https://travis-ci.org/x25/parallel-js)
+parallel-js [![Build Status](https://travis-ci.org/x25/parallel-js.png)](https://travis-ci.org/x25/parallel-js) [![Coverage Status](https://coveralls.io/repos/x25/parallel-js/badge.png)](https://coveralls.io/r/x25/parallel-js)
 ===========
 
 Run tasks in parallel or one after another.
