@@ -18,9 +18,9 @@
     "queue"
   ],
   "devDependencies": {
-    "coveralls": "^2.10.0",
-    "jscoverage": "^0.5.1",
-    "nodeunit": "^0.9.0"
+    "coveralls": "latest",
+    "jscoverage": "latest",
+    "nodeunit": "latest"
   },
   "author": "x25",
   "license": "MIT",
