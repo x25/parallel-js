@@ -1,31 +1,32 @@
 {
-  "name": "parallel-js",
-  "version": "1.0.9",
-  "description": "Run tasks in parallel or one after another",
-  "main": "index.js",
-  "scripts": {
-    "test": "NODE_ENV=test ./node_modules/.bin/nodeunit test/*.js",
-    "coveralls": "jscoverage lib && NODE_COV=1 nodeunit --reporter=lcov test | coveralls"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/x25/parallel-js.git"
-  },
-  "keywords": [
-    "parallel",
-    "async",
-    "concurrent",
-    "queue"
-  ],
-  "devDependencies": {
-    "coveralls": "latest",
-    "jscoverage": "latest",
-    "nodeunit": "latest"
-  },
-  "author": "x25",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/x25/parallel-js/issues"
-  },
-  "homepage": "https://github.com/x25/parallel-js"
+	"name": "parallel-js",
+	"version": "1.0.9",
+	"description": "Run tasks in parallel or one after another",
+	"main": "index.js",
+	"scripts": {
+		"test": "NODE_ENV=test ./node_modules/.bin/nodeunit test/*.js",
+		"coveralls": "jscoverage lib && NODE_COV=1 nodeunit --reporter=lcov test | coveralls"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/x25/parallel-js.git"
+	},
+	"keywords": [
+		"parallel",
+		"async",
+		"concurrent",
+		"queue"
+	],
+	"devDependencies": {
+		"coveralls": "latest",
+		"jscoverage": "latest",
+		"nodeunit": "latest",
+		"coffee-script": "latest"
+	},
+	"author": "x25",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/x25/parallel-js/issues"
+	},
+	"homepage": "https://github.com/x25/parallel-js"
 }
