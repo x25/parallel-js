@@ -15,7 +15,8 @@ module.exports = {
 
 		var n = 0;
 
-		var job = function (data, next) {
+		var task = function (next, data) {
+
 			setTimeout(function() {
 				if (!n) {
 					test.equal('data' + (++n), data);
@@ -31,10 +32,9 @@ module.exports = {
 			}, 100);
 		};
 
-		var maxProcess = 1;
-		var processor = new Processor(job, maxProcess);
+		var processor = new Processor(task, 1, 1);
 
-		processor.process('data1');
-		processor.process('data2');
+		processor.run('data1');
+		processor.run('data2');
 	}
 };

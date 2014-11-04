@@ -10,49 +10,48 @@ $ npm install parallel-js
 ## Usage
 
 ```js
-var Processor = require('parallel-js').Processor;
+var spawn = require('child_process').spawn;
 
-var job = function (video, next) {
-	// do something with video...
-	// and when it's done, execute callback for next job
+var Processor = require('./').Processor;
 
-	setTimeout(function () {
-		var now = parseInt(new Date().getTime() / 1000);
+var task = function (next, command, args, options) {
 
-		if (video !== '3.flv') {
-			console.log(now + ' - ' + video + ' processed');
-			next();
+	var cmd = spawn(command, args, options);
 
-		} else {
-			//If an error occurs, you can call this job again "numRetries" times
-			console.log(now + ' - Error while processing ' + video);
-			next('Error!'); //pass any argument
-		}
+	cmd.on('close', function (code) {
 
-	}, 3000);
+		console.log(new Date() + ' ' + command + ' ' + args + ' finished with code ' + code);
+
+		next(code);
+	});
 };
 
 var maxProcess = 2;
 var numRetries = 1;
 
-var processor = new Processor(job, maxProcess, numRetries);
+var parallel = new Processor(task, maxProcess, numRetries);
 
-processor.process('1.flv');
-processor.process('2.flv');
-processor.process('3.flv');
-processor.process('4.flv');
-processor.process('5.flv');
+//Job: resize really huge images in parallel
+
+//These tasks are processed in parallel (maxProcess=2)
+parallel.run('convert', ['1.jpg', '-resize', '50%', '1.png']);
+parallel.run('convert', ['2.jpg', '-resize', '50%', '2.png']);
+
+//After completing one of the tasks next job will be launched
+parallel.run('convert', ['3.jpg', '-resize', '50%', '3.png']);
+
+// Process ended with an error will be repeated 1 more time (numRetries=1)
+parallel.run('convert', ['missing.jpg', '-resize', '50%', 'missing.png']);
 ```
 
 Output:
 
 ```
-1401033698 - 1.flv processed
-1401033698 - 2.flv processed
-1401033701 - Error while processing 3.flv
-1401033701 - 4.flv processed
-1401033704 - Error while processing 3.flv
-1401033704 - 5.flv processed
+[17:13:52] convert 1.jpg,-resize,50%,1.png finished with code 0
+[17:13:52] convert 2.jpg,-resize,50%,2.png finished with code 0
+[17:13:53] convert missing.jpg,-resize,50%,missing.png finished with code 1
+[17:13:53] convert missing.jpg,-resize,50%,missing.png finished with code 1
+[17:13:58] convert 3.jpg,-resize,50%,3.png finished with code 0
 ```
 
 ## Tests
