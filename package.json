@@ -4,6 +4,7 @@
 	"description": "Run tasks in parallel or one after another",
 	"main": "index.js",
 	"scripts": {
+		"compile": "./node_modules/.bin/coffee -c -b -o lib src",
 		"test": "NODE_ENV=test ./node_modules/.bin/nodeunit test/*.js",
 		"coveralls": "jscoverage lib && NODE_COV=1 nodeunit --reporter=lcov test | coveralls"
 	},

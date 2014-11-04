@@ -1,4 +1,4 @@
-Pool = require('./pool').Pool;
+Pool = require('./pool').Pool
 
 class Processor
   constructor: (@job, @maxProcesses = 3, @numRetries = 2) ->
