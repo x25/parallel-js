@@ -9,7 +9,7 @@ $ npm install parallel-js
 
 ## Usage
 
-Example: resizing huge images in parallel using ImageMagick and child process.
+Example: resize images in parallel using ImageMagick and child processes.
 
 ```js
 var Processor = require('parallel-js').Processor;
@@ -22,6 +22,7 @@ var task = function (next, command, args) {
 
 		console.log(new Date(), command, args, 'finished with code', code);
 
+		//non-zero value indicates an error (the task will be repeated)
 		next(code);
 	});
 };
